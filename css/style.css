@@ -15,6 +15,10 @@ div {
 
 }
 
+#navbar {
+	border-bottom: 1px solid black;
+	padding-bottom: 20px;
+}
 
 /** media queries **/
 
@@ -28,12 +32,10 @@ div {
 }
 
 @media (min-width: 700px) {
+	
     .header{
       background-color: lightgreen;
     }
 	
-	#header-main-text {
-
-	}
 
 }
