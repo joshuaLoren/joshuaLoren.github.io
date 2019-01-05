@@ -15,9 +15,10 @@ div {
 
 }
 
-#navbar {
-	border-bottom: 1px solid black;
-	padding-bottom: 20px;
+#contact {
+	display: flex;
+	justify-content: center;
+	
 }
 
 /** media queries **/
