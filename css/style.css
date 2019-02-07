@@ -1,42 +1,8 @@
 /** main css **/
 
-html, body{
-  height: 100%;
+body {
+	background-color: #f8f9fa;
 }
 
-div {
-    display: block;
-}
 
-.container {
-  width: 70%;
-  height: 200px;
-  position: relative;
 
-}
-
-#contact {
-	display: flex;
-	justify-content: center;
-	
-}
-
-/** media queries **/
-
-@media (max-width: 700px) {
-    .container{
-      background-color: lightblue;
-        padding: 0;
-        margin: 0 auto;
-    }
-	
-}
-
-@media (min-width: 700px) {
-	
-    .header{
-      background-color: lightgreen;
-    }
-	
-
-}
