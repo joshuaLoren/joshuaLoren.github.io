@@ -7,7 +7,7 @@ export const SITE = {
   linkedin: 'https://www.linkedin.com/in/joshuasmalluncc/',
 };
 
-export type Role = { title: string; points: string[] };
+export type Role = { title?: string; points: string[] };
 export type Job = { company: string; context: string; dates: string; roles: Role[] };
 
 export const WORK: Job[] = [
@@ -49,7 +49,6 @@ export const WORK: Job[] = [
     dates: '2019 – 2020',
     roles: [
       {
-        title: 'Associate Software Developer',
         points: [
           'Built analytics features on the Rothman Index, used by nurses and clinicians to monitor patient condition.',
         ],

@@ -1,11 +1,10 @@
 ---
 import Base from '../layouts/Base.astro';
 import NoteRows from '../components/NoteRows.astro';
-import ProjectRows from '../components/ProjectRows.astro';
-import { getNotes, getProjects } from '../data';
+import { getNotes } from '../data';
 import { WORK } from '../site';
 
-const [notes, projects] = await Promise.all([getNotes(), getProjects()]);
+const notes = await getNotes();
 ---
 <Base>
   <div class="intro">
@@ -31,18 +30,13 @@ const [notes, projects] = await Promise.all([getNotes(), getProjects()]);
         </div>
         {job.roles.map((r) => (
           <div class="role">
-            <h4>{r.title}</h4>
+            {r.title && <h4>{r.title}</h4>}
             <ul>{r.points.map((pt) => <li>{pt}</li>)}</ul>
           </div>
         ))}
       </div>
     ))}
     <p class="more">B.S. Computer Science, UNC Charlotte, cum laude · <a href="/resume.pdf">Resume (PDF)</a></p>
-  </section>
-
-  <section>
-    <h2 class="label">Projects</h2>
-    <ProjectRows projects={projects} />
   </section>
 
   <section>
