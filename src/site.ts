@@ -2,7 +2,7 @@ export const SITE = {
   name: 'Joshua Small',
   title: 'Joshua Small',
   description:
-    'Staff software engineer at Aiwyn. I built its payments platform from $24M to $2.38B in payment volume.',
+    'Staff software engineer at Aiwyn. I built its payments platform from zero to $2.38B in payment volume.',
   github: 'https://github.com/joshuaLoren',
   linkedin: 'https://www.linkedin.com/in/joshuasmalluncc/',
 };
@@ -34,7 +34,7 @@ export const WORK: Job[] = [
       {
         title: 'Software Engineer',
         points: [
-          'Built the payments platform from scratch. Payment volume grew from $24M to $2.38B.',
+          'Built the payments platform from scratch and took it from $0 to $2.38B in payment volume.',
           'Designed the payment state machine, with self-healing reconciliation and long-lived idempotency.',
           'Integrated Stripe Payment Intents, Connect, ACH, and cards, and led the migration off the Charges API.',
           'Added international rails: Canadian PAD, BACS, and multi-currency.',
