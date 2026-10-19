@@ -1,28 +1,53 @@
 ---
 import Base from '../layouts/Base.astro';
-import LogFeed from '../components/LogFeed.astro';
-import SystemsTable from '../components/SystemsTable.astro';
-import { getLog, getSystems } from '../data';
-import { WHOAMI, SITE } from '../site';
+import NoteRows from '../components/NoteRows.astro';
+import ProjectRows from '../components/ProjectRows.astro';
+import { getNotes, getProjects } from '../data';
+import { WORK } from '../site';
 
-const [log, systems] = await Promise.all([getLog(), getSystems()]);
-const slugs = systems.map((s) => s.id);
+const [notes, projects] = await Promise.all([getNotes(), getProjects()]);
 ---
 <Base>
+  <div class="intro">
+    <h1>Joshua Small</h1>
+    <p>
+      I'm a staff software engineer at <a href="https://www.aiwyn.ai">Aiwyn</a>, which builds software
+      for accounting firms. I joined in 2020 as a founding developer and built the payments platform,
+      which grew from $24M to $2.38B in payment volume.
+    </p>
+    <p class="muted">
+      Outside work I build with LLMs, mostly evals and agents for finance and accounting workflows.
+      Notes from that are below.
+    </p>
+  </div>
+
   <section>
-    <p class="cmd">whoami</p>
-    <h1>{SITE.name}</h1>
-    <dl class="kv">{WHOAMI.map(([k, v]) => <><dt>{k}</dt><dd>{v}</dd></>)}</dl>
+    <h2 class="label">Work</h2>
+    {WORK.map((job) => (
+      <div class="job">
+        <div class="job-head">
+          <h3>{job.company} <span>· {job.context}</span></h3>
+          <span class="dates">{job.dates}</span>
+        </div>
+        {job.roles.map((r) => (
+          <div class="role">
+            <h4>{r.title}</h4>
+            <ul>{r.points.map((pt) => <li>{pt}</li>)}</ul>
+          </div>
+        ))}
+      </div>
+    ))}
+    <p class="more">B.S. Computer Science, UNC Charlotte, cum laude · <a href="/resume.pdf">Resume (PDF)</a></p>
   </section>
 
   <section>
-    <p class="cmd">ls ~/systems</p>
-    <SystemsTable systems={systems} />
+    <h2 class="label">Projects</h2>
+    <ProjectRows projects={projects} />
   </section>
 
   <section>
-    <p class="cmd">tail -n 10 ~/log</p>
-    <LogFeed entries={log.slice(0, 10)} systemSlugs={slugs} />
-    {log.length > 10 && <p><a href="/log/">cat ~/log →</a></p>}
+    <h2 class="label">Notes</h2>
+    <NoteRows notes={notes.slice(0, 5)} />
+    {notes.length > 5 && <p class="more"><a href="/notes/">All notes</a></p>}
   </section>
 </Base>

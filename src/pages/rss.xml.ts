@@ -1,19 +1,19 @@
 import rss from '@astrojs/rss';
 import type { APIContext } from 'astro';
-import { getLog } from '../data';
+import { getNotes } from '../data';
 import { SITE } from '../site';
 
 export async function GET(context: APIContext) {
-  const log = await getLog();
+  const notes = await getNotes();
   return rss({
     title: SITE.title,
     description: SITE.description,
     site: context.site!,
-    items: log.map((e) => ({
-      title: `[${e.data.system}] ${e.data.title}`,
-      description: e.data.lines.join(' / '),
-      pubDate: e.data.date,
-      link: `/log/${e.id}/`,
+    items: notes.map((n) => ({
+      title: n.data.title,
+      description: n.data.summary,
+      pubDate: n.data.date,
+      link: `/notes/${n.id}/`,
     })),
   });
 }

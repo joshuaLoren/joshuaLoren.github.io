@@ -1,0 +1,25 @@
+---
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { getNotes, getProjects, fmtDate } from '../../data';
+
+export async function getStaticPaths() {
+  const notes = await getNotes();
+  return notes.map((note) => ({ params: { slug: note.id }, props: { note } }));
+}
+const { note } = Astro.props;
+const { Content } = await render(note);
+const project = (await getProjects()).find((p) => p.id === note.data.project);
+---
+<Base title={note.data.title} description={note.data.summary}>
+  <h1>{note.data.title}</h1>
+  <p class="page-meta">
+    {fmtDate(note.data.date)}
+    {project && <> · <a href={`/projects/${project.id}/`}>{project.data.title}</a></>}
+    {note.data.draft && ' · draft'}
+  </p>
+  <div class="md">
+    {note.body?.trim() ? <Content /> : <p>{note.data.summary}</p>}
+  </div>
+  <p class="back"><a href="/notes/">All notes</a></p>
+</Base>

@@ -1,0 +1,16 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { fmtDate } from '../data';
+interface Props { notes: CollectionEntry<'notes'>[] }
+---
+<ul class="rows">
+  {Astro.props.notes.map((n) => (
+    <li>
+      <div class="row-head">
+        <a href={`/notes/${n.id}/`}>{n.data.title}</a>
+        <time class="row-meta" datetime={n.data.date.toISOString()}>{fmtDate(n.data.date)}</time>
+      </div>
+      <p>{n.data.summary}{n.data.draft && ' (draft)'}</p>
+    </li>
+  ))}
+</ul>

@@ -1,6 +1,6 @@
 # joshualoren.github.io
 
-Engineering log + systems index. Astro, deployed to GitHub Pages on push to `main`.
+Personal site: work history, projects, and technical notes. Astro, deployed to GitHub Pages on push to `main`.
 
 ```bash
 npm install
@@ -8,6 +8,6 @@ npm run dev      # http://localhost:4321 (drafts visible)
 npm run build    # static output in dist/
 ```
 
-- **Log entry:** copy `src/content/log/_template.md`. `lines` = terse feed summary; body optional.
-- **System:** add `src/content/systems/<slug>.md`. Log entries with `system: <slug>` show on its page.
-- **whoami / links:** `src/site.ts`.
+- **Work history:** `WORK` in `src/site.ts`. Resume PDF: `public/resume.pdf`.
+- **Note:** copy `src/content/notes/_template.md`. `draft: true` keeps it off the live site.
+- **Project:** add `src/content/projects/<slug>.md`. Set `url` for a live demo and `repo` for source. A markdown body gives it a write-up page at `/projects/<slug>/`; without one, it links straight out.
