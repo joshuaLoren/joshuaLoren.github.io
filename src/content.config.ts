@@ -9,6 +9,17 @@ const writing = defineCollection({
     description: z.string(),
     date: z.coerce.date(),
     tags: z.array(z.string()).default([]),
+    series: z.string().optional(),
+    draft: z.boolean().default(false),
+  }),
+});
+
+const til = defineCollection({
+  loader: glob({ pattern: ['**/*.md', '!**/_*'], base: './src/content/til' }),
+  schema: z.object({
+    title: z.string(),
+    date: z.coerce.date(),
+    tags: z.array(z.string()).default([]),
     draft: z.boolean().default(false),
   }),
 });
@@ -26,4 +37,4 @@ const projects = defineCollection({
   }),
 });
 
-export const collections = { writing, projects };
+export const collections = { writing, til, projects };

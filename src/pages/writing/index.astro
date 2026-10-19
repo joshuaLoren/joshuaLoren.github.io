@@ -2,10 +2,14 @@
 import Base from '../../layouts/Base.astro';
 import PostList from '../../components/PostList.astro';
 import { getPosts } from '../../posts';
+import { SERIES } from '../../site';
 const posts = await getPosts();
 ---
 <Base title="Writing" description="Notes and essays on payments, accounting systems, and applied AI.">
   <h1>Writing</h1>
   <p class="lede">Notes, write-ups, and things I figured out the hard way.</p>
+  <p class="series-note" style="margin-top:20px">Series:{' '}
+    {Object.entries(SERIES).map(([slug, s], i) => <>{i > 0 && ' · '}<a href={`/writing/series/${slug}/`}>{s.name}</a></>)}
+  </p>
   <div style="margin-top:32px"><PostList posts={posts} /></div>
 </Base>

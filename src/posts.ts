@@ -9,3 +9,8 @@ export async function getProjects() {
   const projects = await getCollection('projects');
   return projects.sort((a, b) => a.data.order - b.data.order);
 }
+
+export async function getTils() {
+  const tils = await getCollection('til', ({ data }) => import.meta.env.DEV || !data.draft);
+  return tils.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+}

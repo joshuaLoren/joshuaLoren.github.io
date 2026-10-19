@@ -8,7 +8,9 @@ const pageTitle = title ? `${title} · ${SITE.name}` : SITE.title;
 const path = Astro.url.pathname;
 const nav = [
   { href: '/writing/', label: 'Writing' },
+  { href: '/til/', label: 'TIL' },
   { href: '/projects/', label: 'Projects' },
+  { href: '/now/', label: 'Now' },
   { href: '/about/', label: 'About' },
 ];
 ---
@@ -46,8 +48,8 @@ const nav = [
         <span>© {new Date().getFullYear()} {SITE.name}</span>
         <span>
           <a href={SITE.github}>GitHub</a>
-          {SITE.linkedin && <> · <a href={SITE.linkedin}>LinkedIn</a></>}
-          · <a href="/rss.xml">RSS</a>
+          {SITE.linkedin && <>{' · '}<a href={SITE.linkedin}>LinkedIn</a></>}
+          {' · '}<a href="/rss.xml">RSS</a>
         </span>
       </div>
     </footer>

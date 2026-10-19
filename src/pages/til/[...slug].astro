@@ -1,0 +1,23 @@
+---
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { getTils } from '../../posts';
+import { fmtDate } from '../../format';
+
+export async function getStaticPaths() {
+  const tils = await getTils();
+  return tils.map((til) => ({ params: { slug: til.id }, props: { til } }));
+}
+const { til } = Astro.props;
+const { Content } = await render(til);
+---
+<Base title={`TIL: ${til.data.title}`}>
+  <p class="eyebrow"><a href="/til/">← Today I learned</a></p>
+  <h1>{til.data.title}</h1>
+  <div class="post-meta">
+    <time datetime={til.data.date.toISOString()}>{fmtDate(til.data.date)}</time>
+    {til.data.draft && <> · <strong>Draft</strong></>}
+    {til.data.tags.length > 0 && <div class="tags">{til.data.tags.map((t) => <span class="chip">{t}</span>)}</div>}
+  </div>
+  <article class="prose"><Content /></article>
+</Base>
