@@ -1,0 +1,10 @@
+---
+import Base from '../../layouts/Base.astro';
+import SystemsTable from '../../components/SystemsTable.astro';
+import { getSystems } from '../../data';
+const systems = await getSystems();
+---
+<Base title="systems" description="Systems I've built and am building.">
+  <p class="cmd">ls -l ~/systems</p>
+  <SystemsTable systems={systems} />
+</Base>

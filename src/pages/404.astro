@@ -1,7 +1,8 @@
 ---
 import Base from '../layouts/Base.astro';
 ---
-<Base title="Not found">
-  <h1>Nothing here.</h1>
-  <p class="lede">That page doesn't exist. <a href="/">Head home</a>.</p>
+<Base title="404">
+  <p class="cmd">cd {Astro.url.pathname}</p>
+  <p><span class="warn">cd: no such file or directory</span></p>
+  <p><a href="/">cd ~</a></p>
 </Base>

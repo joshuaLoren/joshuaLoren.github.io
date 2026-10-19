@@ -1,31 +1,28 @@
 ---
 import Base from '../layouts/Base.astro';
-import PostList from '../components/PostList.astro';
-import ProjectCard from '../components/ProjectCard.astro';
-import TilList from '../components/TilList.astro';
-import { getPosts, getProjects, getTils } from '../posts';
+import LogFeed from '../components/LogFeed.astro';
+import SystemsTable from '../components/SystemsTable.astro';
+import { getLog, getSystems } from '../data';
+import { WHOAMI, SITE } from '../site';
 
-const posts = (await getPosts()).slice(0, 5);
-const projects = (await getProjects()).slice(0, 4);
-const tils = (await getTils()).slice(0, 5);
+const [log, systems] = await Promise.all([getLog(), getSystems()]);
+const slugs = systems.map((s) => s.id);
 ---
 <Base>
-  <p class="eyebrow">Accounting engineer</p>
-  <h1>Hi, I'm Joshua.</h1>
-  <p class="lede">
-    I build the systems underneath accounting and payments: billing, money movement, the ledger,
-    and lately the AI that sits on top of them. This is where I share what I'm building and learning.
-  </p>
+  <section>
+    <p class="cmd">whoami</p>
+    <h1>{SITE.name}</h1>
+    <dl class="kv">{WHOAMI.map(([k, v]) => <><dt>{k}</dt><dd>{v}</dd></>)}</dl>
+  </section>
 
-  <h2>Recent writing</h2>
-  <PostList posts={posts} />
-  <p><a href="/writing/">All writing →</a></p>
+  <section>
+    <p class="cmd">ls ~/systems</p>
+    <SystemsTable systems={systems} />
+  </section>
 
-  <h2>Today I learned</h2>
-  <TilList tils={tils} />
-  <p><a href="/til/">All TILs →</a></p>
-
-  <h2>Projects</h2>
-  <div class="cards">{projects.map((p) => <ProjectCard project={p} />)}</div>
-  <p><a href="/projects/">All projects →</a></p>
+  <section>
+    <p class="cmd">tail -n 10 ~/log</p>
+    <LogFeed entries={log.slice(0, 10)} systemSlugs={slugs} />
+    {log.length > 10 && <p><a href="/log/">cat ~/log →</a></p>}
+  </section>
 </Base>

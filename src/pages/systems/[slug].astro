@@ -1,0 +1,36 @@
+---
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import LogFeed from '../../components/LogFeed.astro';
+import { getLog, getSystems } from '../../data';
+
+export async function getStaticPaths() {
+  const systems = await getSystems();
+  return systems.map((system) => ({ params: { slug: system.id }, props: { system } }));
+}
+const { system } = Astro.props;
+const { Content } = await render(system);
+const entries = (await getLog()).filter((e) => e.data.system === system.id);
+const d = system.data;
+---
+<Base title={d.title} description={d.tagline}>
+  <p class="cmd">cat ~/systems/{system.id}/README.md</p>
+  <h1>{d.title}</h1>
+  <p class="meta">{d.tagline}</p>
+  <div class="panel">
+    <dl class="kv">
+      <dt>status</dt><dd class={`status ${d.status}`}>{d.status}</dd>
+      {d.metric && <><dt>metric</dt><dd>{d.metric}</dd></>}
+      <dt>stack</dt><dd>{d.stack.join(' · ')}</dd>
+      {d.url && <><dt>url</dt><dd><a href={d.url}>{d.url.replace(/^https?:\/\//, '')}</a></dd></>}
+      {d.repo && <><dt>src</dt><dd><a href={d.repo}>{d.repo.replace(/^https?:\/\//, '')}</a></dd></>}
+    </dl>
+  </div>
+  <div class="md"><Content /></div>
+  {entries.length > 0 && (
+    <section>
+      <p class="cmd">grep {system.id} ~/log</p>
+      <LogFeed entries={entries} systemSlugs={[system.id]} />
+    </section>
+  )}
+</Base>

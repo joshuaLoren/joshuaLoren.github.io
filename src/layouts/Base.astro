@@ -4,14 +4,11 @@ import { SITE } from '../site';
 
 interface Props { title?: string; description?: string }
 const { title, description = SITE.description } = Astro.props;
-const pageTitle = title ? `${title} · ${SITE.name}` : SITE.title;
+const pageTitle = title ? `${title} · ${SITE.handle}` : SITE.title;
 const path = Astro.url.pathname;
 const nav = [
-  { href: '/writing/', label: 'Writing' },
-  { href: '/til/', label: 'TIL' },
-  { href: '/projects/', label: 'Projects' },
-  { href: '/now/', label: 'Now' },
-  { href: '/about/', label: 'About' },
+  { href: '/log/', label: '~/log' },
+  { href: '/systems/', label: '~/systems' },
 ];
 ---
 <!doctype html>
@@ -26,32 +23,25 @@ const nav = [
     <link rel="alternate" type="application/rss+xml" title={SITE.title} href="/rss.xml" />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
   </head>
   <body>
     <header class="site">
       <div class="wrap">
-        <a class="brand" href="/">{SITE.name}</a>
+        <a class="brand" href="/">{SITE.handle}<span>@</span>dev</a>
         <nav>
           {nav.map((n) => (
             <a href={n.href} aria-current={path.startsWith(n.href) ? 'page' : undefined}>{n.label}</a>
           ))}
+          <a href={SITE.github}>github</a>
+          {SITE.linkedin && <a href={SITE.linkedin}>linkedin</a>}
+          <a href="/rss.xml">rss</a>
         </nav>
       </div>
     </header>
     <main><div class="wrap"><slot /></div></main>
-    <footer class="site">
-      <div class="wrap">
-        <span>© {new Date().getFullYear()} {SITE.name}</span>
-        <span>
-          <a href={SITE.github}>GitHub</a>
-          {SITE.linkedin && <>{' · '}<a href={SITE.linkedin}>LinkedIn</a></>}
-          {' · '}<a href="/rss.xml">RSS</a>
-        </span>
-      </div>
-    </footer>
+    <footer class="site"><div class="wrap">{SITE.name} · {new Date().getFullYear()}</div></footer>
   </body>
 </html>

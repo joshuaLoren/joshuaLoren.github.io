@@ -1,17 +1,18 @@
 export const SITE = {
   name: 'Joshua Small',
-  title: 'Joshua Small — engineering notes',
-  description:
-    'Accounting engineer. Notes, experiments, and projects on payments, accounting systems, and applied AI.',
+  handle: 'jsmall',
+  title: 'jsmall — engineering log',
+  description: 'Engineering log: payments infrastructure, accounting systems, and LLM evals.',
   github: 'https://github.com/joshuaLoren',
-  linkedin: '', // add your LinkedIn URL to show it in the footer
+  linkedin: '', // add your LinkedIn URL to show it in the header
 };
 
-// Series slugs used in a post's `series:` frontmatter, mapped to display info.
-export const SERIES: Record<string, { name: string; description: string }> = {
-  'dispute-engine': {
-    name: 'Dispute Engine log',
-    description:
-      'Building a chargeback-triage system in public, one curriculum week at a time, with the eval scorecard as it develops.',
-  },
-};
+// `$ whoami` on the home page. Keep it terse.
+export const WHOAMI: [string, string][] = [
+  ['role', 'accounting engineer · staff software engineer'],
+  ['built', 'payments infra, $24M → $2.38B processed'],
+  ['rails', 'stripe connect · ach · plaid · pad · bacs · multi-currency'],
+  ['stack', 'kotlin · spring boot · typescript · angular · graphql · postgres · redis · gcp'],
+  ['learning', 'python · llm evals · agents · mcp · rag'],
+  ['loc', 'charlotte, nc'],
+];
