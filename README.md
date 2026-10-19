@@ -1,6 +1,6 @@
 # joshualoren.github.io
 
-Personal site: work history, projects, and technical notes. Astro, deployed to GitHub Pages on push to `main`.
+Personal site: work history, projects, and technical notes. Astro. `main` holds source; `./deploy.sh` builds and pushes `dist/` to `gh-pages`, which Pages serves. The 2019 site is preserved on `legacy-2019`.
 
 ```bash
 npm install
