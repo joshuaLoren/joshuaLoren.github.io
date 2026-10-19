@@ -14,6 +14,7 @@ const notes = (await getNotes()).filter((n) => n.data.project === project.id);
 const d = project.data;
 ---
 <Base title={d.title} description={d.summary}>
+  <p class="cmd">cat projects/{project.id}/README.md</p>
   <h1>{d.title}</h1>
   <p class="page-meta">{d.summary}</p>
   <dl class="facts">
@@ -25,9 +26,9 @@ const d = project.data;
   <div class="md"><Content /></div>
   {notes.length > 0 && (
     <section>
-      <h2 class="label">Notes on this project</h2>
+      <h2 class="cmd">grep -l {project.id} notes/</h2>
       <NoteRows notes={notes} />
     </section>
   )}
-  <p class="back"><a href="/notes/">All notes</a></p>
+  <p class="back"><a href="/notes/">← notes/</a></p>
 </Base>

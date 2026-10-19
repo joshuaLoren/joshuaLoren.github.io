@@ -8,6 +8,7 @@ const notes = await getNotes();
 ---
 <Base>
   <div class="intro">
+    <p class="cmd">whoami</p>
     <h1>Joshua Small</h1>
     <p>
       I'm a staff software engineer at <a href="https://www.aiwyn.ai">Aiwyn</a>, which builds software
@@ -21,11 +22,11 @@ const notes = await getNotes();
   </div>
 
   <section>
-    <h2 class="label">Work</h2>
+    <h2 class="cmd">cat experience.md</h2>
     {WORK.map((job) => (
       <div class="job">
         <div class="job-head">
-          <h3>{job.company} <span>· {job.context}</span></h3>
+          <h3>{job.company}</h3>
           <span class="dates">{job.dates}</span>
         </div>
         {job.roles.map((r) => (
@@ -40,8 +41,8 @@ const notes = await getNotes();
   </section>
 
   <section>
-    <h2 class="label">Notes</h2>
+    <h2 class="cmd">ls -t notes/</h2>
     <NoteRows notes={notes.slice(0, 5)} />
-    {notes.length > 5 && <p class="more"><a href="/notes/">All notes</a></p>}
+    {notes.length > 5 && <p class="more"><a href="/notes/">ls notes/</a></p>}
   </section>
 </Base>

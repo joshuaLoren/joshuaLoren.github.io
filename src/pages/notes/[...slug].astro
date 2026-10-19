@@ -12,6 +12,7 @@ const { Content } = await render(note);
 const project = (await getProjects()).find((p) => p.id === note.data.project);
 ---
 <Base title={note.data.title} description={note.data.summary}>
+  <p class="cmd">cat notes/{note.id}.md</p>
   <h1>{note.data.title}</h1>
   <p class="page-meta">
     {fmtDate(note.data.date)}
@@ -21,5 +22,5 @@ const project = (await getProjects()).find((p) => p.id === note.data.project);
   <div class="md">
     {note.body?.trim() ? <Content /> : <p>{note.data.summary}</p>}
   </div>
-  <p class="back"><a href="/notes/">All notes</a></p>
+  <p class="back"><a href="/notes/">← notes/</a></p>
 </Base>

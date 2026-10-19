@@ -8,12 +8,11 @@ export const SITE = {
 };
 
 export type Role = { title?: string; points: string[] };
-export type Job = { company: string; context: string; dates: string; roles: Role[] };
+export type Job = { company: string; dates: string; roles: Role[] };
 
 export const WORK: Job[] = [
   {
     company: 'Aiwyn',
-    context: 'Software for accounting firms',
     dates: '2020 – present',
     roles: [
       {
@@ -45,10 +44,10 @@ export const WORK: Job[] = [
   },
   {
     company: 'PeraHealth',
-    context: 'Clinical decision support',
     dates: '2019 – 2020',
     roles: [
       {
+        title: 'Software Engineer',
         points: [
           'Built analytics features on the Rothman Index, used by nurses and clinicians to monitor patient condition.',
         ],

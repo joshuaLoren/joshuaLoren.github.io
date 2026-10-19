@@ -7,8 +7,8 @@ const { title, description = SITE.description } = Astro.props;
 const pageTitle = title ? `${title} · ${SITE.name}` : SITE.title;
 const path = Astro.url.pathname;
 const nav = [
-  { href: '/notes/', label: 'Notes' },
-  { href: '/resume.pdf', label: 'Resume' },
+  { href: '/notes/', label: 'notes' },
+  { href: '/resume.pdf', label: 'resume.pdf' },
 ];
 ---
 <!doctype html>
@@ -25,12 +25,12 @@ const nav = [
     <meta property="og:description" content={description} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
   </head>
   <body>
     <header class="site">
       <div class="wrap">
-        {path === "/" ? <span /> : <a class="brand" href="/">{SITE.name}</a>}
+        <a class="brand" href="/">~/joshua-small</a>
         <nav>
           {nav.map((n) => (
             <a href={n.href} aria-current={path.startsWith(n.href) ? 'page' : undefined}>{n.label}</a>
@@ -41,9 +41,9 @@ const nav = [
     <main><div class="wrap"><slot /></div></main>
     <footer class="site">
       <div class="wrap">
-        <a href={SITE.linkedin}>LinkedIn</a>
-        <a href={SITE.github}>GitHub</a>
-        <a href="/rss.xml">RSS</a>
+        <a href={SITE.linkedin}>linkedin</a>
+        <a href={SITE.github}>github</a>
+        <a href="/rss.xml">rss</a>
       </div>
     </footer>
   </body>

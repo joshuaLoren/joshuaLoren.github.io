@@ -5,6 +5,7 @@ import { getNotes } from '../../data';
 const notes = await getNotes();
 ---
 <Base title="Notes" description="Short technical notes: findings, eval results, and fixes.">
+  <p class="cmd">ls -t notes/</p>
   <h1>Notes</h1>
   <p class="page-meta">Short technical notes: findings, eval results, and fixes.</p>
   <NoteRows notes={notes} />
