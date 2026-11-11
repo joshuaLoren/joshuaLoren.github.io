@@ -1,0 +1,105 @@
+[
+  {
+    "slug": "pokemon-binder",
+    "name": "Pokémon Binder",
+    "area": "Family",
+    "status": "live",
+    "summary": "A card binder for my kids in one HTML file, with live prices, trend charts, card scanning and share links.",
+    "now": "Share links and video card intake shipped in Aug.",
+    "links": [
+      {
+        "label": "Live",
+        "url": "https://joshualoren.github.io/pokemon-binder/"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/joshuaLoren/pokemon-binder"
+      }
+    ],
+    "touched": "2026-09-04"
+  },
+  {
+    "slug": "invoicebolt",
+    "name": "Invoicebolt",
+    "area": "Tools",
+    "status": "live",
+    "summary": "Free invoice generator that runs in the browser. No sign-up, no watermark.",
+    "now": "Live with 40 profession template pages and 4 guides.",
+    "links": [
+      {
+        "label": "Live",
+        "url": "https://joshualoren.github.io/invoicebolt/"
+      },
+      {
+        "label": "Source",
+        "url": "https://github.com/joshuaLoren/invoicebolt"
+      }
+    ],
+    "touched": "2026-07-30"
+  },
+  {
+    "slug": "hf-agents-course",
+    "name": "Hugging Face Agents Course",
+    "area": "Learning",
+    "status": "building",
+    "summary": "Working through the course (smolagents, LlamaIndex, LangGraph) for the certificate.",
+    "now": "Started Nov 3.",
+    "links": [
+      {
+        "label": "Course",
+        "url": "https://huggingface.co/learn/agents-course"
+      }
+    ],
+    "touched": "2026-11-03"
+  },
+  {
+    "slug": "swe-state",
+    "name": "SWE State",
+    "area": "Data",
+    "status": "building",
+    "summary": "Real data on the software engineering job market next to how the media covers it, with a stated opinion on what's actually happening.",
+    "now": "Data pipeline, an opinions layer, a focus guide built on 89k HN hiring posts, and a voices tracker with 33 people.",
+    "links": [
+      {
+        "label": "Source",
+        "url": "https://github.com/joshuaLoren/swe-state"
+      }
+    ],
+    "touched": "2026-10-30"
+  },
+  {
+    "slug": "tally",
+    "name": "Tally",
+    "area": "Showcase",
+    "status": "building",
+    "summary": "A Venmo-style payments app built to document how to build software properly with AI. The process docs are the deliverable.",
+    "now": "App plus PROCESS, BUILD_LOG, DECISIONS, THREAT_MODEL and a \"wrong way\" case study.",
+    "links": [],
+    "touched": "2026-10-21"
+  },
+  {
+    "slug": "dispute-engine",
+    "name": "Dispute Engine",
+    "area": "Learning",
+    "status": "building",
+    "summary": "Chargeback triage with an LLM, built around an eval harness. Doubles as a ten-week AI-engineering curriculum.",
+    "now": "Weeks 0 and 1 done, eval harness built early. Classification hits 1.00 F1 (benchmark too easy); winnability is 43%.",
+    "links": [
+      {
+        "label": "Write-up",
+        "url": "/projects/dispute-engine/"
+      }
+    ],
+    "touched": "2026-08-25"
+  },
+  {
+    "slug": "ground-rules",
+    "name": "Ground Rules",
+    "area": "Games",
+    "status": "idea",
+    "summary": "A baseball trading card game whose mechanics are the official rulebook. Infield fly, balks and appeals are the plays.",
+    "now": "v0.1 print-and-play starter and an art bible drafted in Sep.",
+    "links": [],
+    "touched": "2026-09-04"
+  }
+]

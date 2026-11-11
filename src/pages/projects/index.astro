@@ -1,0 +1,10 @@
+---
+import Base from '../../layouts/Base.astro';
+import ProjectList from '../../components/ProjectList.astro';
+---
+<Base title="Projects" description="What I'm building, with where each one stands right now.">
+  <p class="cmd">ls -l projects/</p>
+  <h1>Projects</h1>
+  <p class="page-meta">What I'm building, finished or not, and where each one stands.</p>
+  <ProjectList />
+</Base>

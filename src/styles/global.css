@@ -96,3 +96,12 @@ pre code { background: none; padding: 0; }
 footer.site { border-top: 1px solid var(--rule); padding: 16px 0 32px; color: var(--dim); font-size: 13px; }
 footer.site .wrap { display: flex; gap: 18px; flex-wrap: wrap; }
 footer.site a { color: var(--dim); }
+
+/* projects */
+.pname { font-weight: 600; }
+.status { font-size: 12px; padding: 0 7px; border: 1px solid currentColor; border-radius: 4px; white-space: nowrap; }
+.s-live { color: var(--prompt); }
+.s-building { color: var(--link); }
+.s-waiting, .s-idea, .s-paused, .s-archived { color: var(--dim); }
+ul.rows p.now { color: var(--text); }
+ul.rows p.links { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 4px; font-size: 13px; }

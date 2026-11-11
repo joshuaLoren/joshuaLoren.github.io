@@ -1,6 +1,8 @@
 ---
 import Base from '../layouts/Base.astro';
 import NoteRows from '../components/NoteRows.astro';
+import ProjectList from '../components/ProjectList.astro';
+import projects from '../data/projects.json';
 import { getNotes } from '../data';
 import { WORK } from '../site';
 
@@ -17,7 +19,7 @@ const notes = await getNotes();
     </p>
     <p class="muted">
       Outside work I build with LLMs, mostly evals and agents for finance and accounting workflows.
-      Notes from that are below.
+      Projects and notes from that are below.
     </p>
   </div>
 
@@ -38,6 +40,12 @@ const notes = await getNotes();
       </div>
     ))}
     <p class="more">B.S. Computer Science, UNC Charlotte, cum laude · <a href="/resume.pdf">Resume (PDF)</a></p>
+  </section>
+
+  <section>
+    <h2 class="cmd">ls projects/</h2>
+    <ProjectList limit={5} />
+    {projects.length > 5 && <p class="more"><a href="/projects/">ls -l projects/</a></p>}
   </section>
 
   <section>

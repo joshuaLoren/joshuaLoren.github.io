@@ -1,0 +1,21 @@
+---
+// Public projects, generated from the private master list by ~/development/hub/build.mjs.
+import projects from '../data/projects.json';
+interface Props { limit?: number }
+const list = Astro.props.limit ? projects.slice(0, Astro.props.limit) : projects;
+---
+<ul class="rows projects">
+  {list.map((p) => (
+    <li>
+      <div class="row-head">
+        <span class="pname">{p.name}</span>
+        <span class={`status s-${p.status}`}>{p.status}</span>
+      </div>
+      <p>{p.summary}</p>
+      <p class="now"><span class="muted">now:</span> {p.now}</p>
+      {p.links.length > 0 && (
+        <p class="links">{p.links.map((l) => <a href={l.url}>{l.label}</a>)}</p>
+      )}
+    </li>
+  ))}
+</ul>
